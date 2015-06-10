@@ -1,0 +1,44 @@
+
+<div class="container simpleDemo">
+  <div class="row text-center">
+    <h1>Task Milestone User Interface</h1>
+  </div>
+
+  <div class="col-md-9">
+
+
+<div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div>
+
+<div class="thumbnail" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable style='height:50px;'>
+  <div class="btn btn-success" data-drag="false" data-jqyoui-options ng-model="list2" jqyoui-draggable ng-hide="!list2.title">{{list2.title}}</div>
+</div>
+
+  </div>
+
+  <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">List {{listName}}</h3>
+      </div>
+      <div class="panel-body"></div>
+        <ul dnd-list="list">
+          <li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+            {{item.label}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div view-source="simple"></div>
+
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Generated Model</h3>
+        </div>
+        <div class="panel-body">
+          <pre class="code">{{modelAsJson}}</pre>
+        </div>
+      </div>
+    </div>
+</div>
