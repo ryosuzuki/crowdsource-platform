@@ -20,6 +20,7 @@ angular
     'crowdsource.tasks',
     'crowdsource.directives',
     'crowdsource.worker',
+    'crowdsource.editor',
     'crowdsource.project'
   ]);
 
