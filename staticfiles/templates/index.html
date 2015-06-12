@@ -20,6 +20,7 @@
     <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link href="{% static 'css/milestone.css' %}" rel="stylesheet">
+    <link href="{% static 'css/monitor.css' %}" rel="stylesheet">
 </head>
 
 
@@ -42,25 +43,19 @@
         <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
           <ul class="nav navbar-nav">
               <li class="">
-                  <a class="page-scroll" href="/home">Worker</a>
+                  <a class="page-scroll" href="/worker">Worker</a>
               </li>
               <li class="">
                   <a class="page-scroll" href="/requester">Requester</a>
               </li>
                <li>
-                  <a href="/tasklist">Tasks</a>
+                  <a href="/projectStart">Create Task</a>
               </li>
               <li>
                   <a href="/ranking">Ranking</a>
               </li>
                 <li>
                   <a href="/tasklistSearch">Search</a>
-              </li>
-<!--                 <li>
-                  <a href="/ImageLabel">img</a>
-              </li> -->
-              <li>
-                <a href="/ContactUs">Contact Us</a>
               </li>
               <li>
                   <a class="page-scroll" href="#follow">Follow Us!</a>
@@ -125,6 +120,7 @@
      <script type="text/javascript" src="{% static 'bower_components/angular-aria/angular-aria.min.js'%}"></script>
      <script type="text/javascript" src="{% static 'bower_components/angular-material/angular-material.min.js'%}"></script>
      <script type="text/javascript" src="{% static 'bower_components/query-string/query-string.js'%}"></script>
+  <script type="text/javascript" src="{% static 'bower_components/angular-filter/dist/angular-filter.js'%}"></script>
 
 
   <script type="text/javascript" src="{% static 'bower_components/angular-dragdrop/src/angular-dragdrop.js' %}"></script>
@@ -141,6 +137,9 @@
   <script type="text/javascript" src="{% static 'js/layout/controllers/navbar.controller.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/home/home.module.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/home/controllers/home.controller.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/requester/requester.module.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/requester/controllers/requester.controller.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/requester/services/requester.service.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/ranking/ranking.module.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/ranking/controllers/ranking.controller.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/tasksearch/controllers/tasksearch.controller.js' %}"></script>
@@ -148,9 +147,18 @@
   <script type="text/javascript" src="{% static 'js/tasks/task.module.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/tasks/controllers/task.controller.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/tasksearch/controllers/tasksearch.controller.js' %}"></script>
+
   <script type="text/javascript" src="{% static 'js/milestone/milestone.module.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/milestone/controllers/milestone.controller.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/milestone/services/milestone.service.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/monitor/monitor.module.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/monitor/controllers/monitor.controller.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/monitor/services/monitor.service.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/worker/worker.module.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/worker/controllers/worker.controller.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/worker/services/worker.service.js' %}"></script>
 
      <script type="text/javascript" src="{% static 'js/project/project.module.js' %}"></script>
      <script type="text/javascript" src="{% static 'js/project/controllers/project.controller.js' %}"></script>

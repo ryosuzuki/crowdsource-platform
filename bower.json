@@ -19,8 +19,8 @@
     "angular-smart-table": "2.0.2",
     "angular-material": "0.9.7",
     "angular-oauth2": "3.0.1",
-    "angular-drag-and-drop-lists": "~1.2.0",
-    "angular-dragdrop": "~1.0.11"
+    "angular-dragdrop": "~1.0.11",
+    "angular-filter": "~0.5.4"
   },
   "resolutions": {
     "angular": "1.4.0"

@@ -14,12 +14,15 @@ angular
     'crowdsource.authentication',
     'crowdsource.layout',
     'crowdsource.home',
+    'crowdsource.requester',
     'crowdsource.ranking',
     'crowdsource.tasksearch',
     'crowdsource.tasks',
     'crowdsource.milestone',
+    'crowdsource.monitor',
     'crowdsource.directives',
-        'crowdsource.project'
+    'crowdsource.worker',
+    'crowdsource.project'
   ]);
 
 angular
