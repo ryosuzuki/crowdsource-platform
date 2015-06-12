@@ -38,11 +38,6 @@
     controller: 'taskSearchGridController',
     })
 
-    .when('/editor', {
-      templateUrl: '/static/templates/task/editor.html',
-      controller: 'EditorController',
-    })
-
     .when('/requester', {
       templateUrl: '/static/templates/requester/home.html',
       controller: 'RequesterProfileController',
@@ -91,31 +86,36 @@
         controllerAs: 'project',
         templateUrl :'/static/templates/project/start.html'
     })
-    
+
     .when('/payment', {
         controller: 'ProjectController',
         controllerAs: 'project',
         templateUrl :'/static/templates/project/payment.html'
     })
-    
+
     .when('/milestones', {
         controller: 'ProjectController',
         controllerAs: 'project',
         templateUrl :'/static/templates/project/milestones.html'
     })
-    
+
+    .when('/editor', {
+      templateUrl: '/static/templates/project/editor.html',
+      controller: 'EditorController',
+    })
+
     .when('/review', {
         controller: 'ProjectController',
         controllerAs: 'project',
         templateUrl :'/static/templates/project/review.html'
     })
-    
+
     .when('/project', {
         controller: 'ProjectController',
         controllerAs: 'project',
         templateUrl :'/static/templates/project/project.html'
     })
-    
+
     .when('/contributors/rohit', {
       templateUrl: '/static/templates/contributors/rohit.html'
     })
