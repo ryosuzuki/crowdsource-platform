@@ -8,7 +8,7 @@
   ]);
 
   angular
-    .module('crowdsource.editor.controllers', []);
+    .module('crowdsource.editor.controllers', ['textAngular']);
   angular
     .module('crowdsource.editor.services', []);
 })();
