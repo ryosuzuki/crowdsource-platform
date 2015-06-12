@@ -41,6 +41,7 @@
     .when('/tasks/new', {
       templateUrl: '/static/templates/tasks/new.html',
       controller: 'taskController',
+    })
 
     .when('/requester', {
       templateUrl: '/static/templates/requester/home.html',
