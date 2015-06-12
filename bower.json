@@ -19,7 +19,8 @@
     "angular-smart-table": "2.0.2",
     "angular-material": "0.9.7",
     "angular-oauth2": "3.0.1",
-    "textAngular": "~1.4.1"
+    "textAngular": "~1.4.1",
+    "angular-filter": "~0.5.4"
   },
   "resolutions": {
     "angular": "1.4.0"
