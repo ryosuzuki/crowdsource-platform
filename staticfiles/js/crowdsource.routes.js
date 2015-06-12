@@ -21,6 +21,11 @@
       controller: 'HomeController',
     })
 
+    .when('/worker', {
+      templateUrl: '/static/templates/worker/home.html',
+      controller: 'WorkerProfileController',
+    })
+
     .when('/ranking', {
       templateUrl: '/static/templates/ranking/requesterrank.html',
       controller: 'RankingController',
@@ -36,6 +41,10 @@
     .when('/tasks/new', {
       templateUrl: '/static/templates/tasks/new.html',
       controller: 'taskController',
+
+    .when('/requester', {
+      templateUrl: '/static/templates/requester/home.html',
+      controller: 'RequesterProfileController',
     })
 
     .when('/tasks/:taskId', {
@@ -269,8 +278,12 @@
     .when('/contributors/riyakothari', {
 	  templateUrl: '/static/templates/contributors/riyakothari.html'
      })
-
-
+	.when('/contributors/balaca', {
+    templateUrl: '/static/templates/contributors/balaca.html'
+     })
+    .when('/contributors/jeerel', {
+         templateUrl: '/static/templates/contributors/jeerel.html'
+     })
     .otherwise('/');
   }
 })();
