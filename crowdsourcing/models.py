@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-
+from oauth2client.django_orm import FlowField, CredentialsField
 
 
 class RegistrationModel(models.Model):
@@ -168,18 +168,19 @@ class Module(models.Model):
     """
     name = models.CharField(max_length=128, error_messages={'required': "Please enter the module name!"})
     description = models.TextField(error_messages={'required': "Please enter the module description!"})
+    #icon = models.TextField(default='fa fa-briefcase fa-5x',null = False)
     owner = models.ForeignKey(Requester)
     project = models.ForeignKey(Project)
     categories = models.ManyToManyField(Category, through='ModuleCategory')
     keywords = models.TextField()
     #TODO: To be refined
     statuses = ((1, "Created"),
-                (2, 'In Progress'),
-                (3, 'In Review'),
+                (2, 'In Review'),
+                (3, 'In Progress'),
                 (4, 'Finished')
     )
     status = models.IntegerField(choices=statuses, default=1)
-    price = models.FloatField()
+    # price = models.FloatField()
     repetition = models.IntegerField()
     module_timeout = models.IntegerField()
     deleted = models.BooleanField(default=False)
@@ -232,13 +233,14 @@ class Task(models.Model):
     #TODO: To be refined
     statuses = ((1, "Created"),
                 (2, 'Accepted'),
-                (3, 'Reviewed'),
+                (3, 'Assigned'),
                 (4, 'Finished')
     )
     status = models.IntegerField(choices=statuses, default=1)
     deleted = models.BooleanField(default=False)
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    price = models.FloatField(default = 0)
 
 
 class TaskWorker(models.Model):
@@ -254,8 +256,7 @@ class TaskWorkerResult(models.Model):
     #TODO: To be refined
     statuses = ((1, "Created"),
                 (2, 'Accepted'),
-                (3, 'Reviewed'),
-                (4, 'Finished')
+                (3, 'Rejected')
     )
     status = models.IntegerField(choices=statuses, default=1)
     created_timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
@@ -341,7 +342,7 @@ class ModuleRating(models.Model):
 
 class ModuleReview(models.Model):
     worker = models.ForeignKey(Worker)
-    annonymous = models.BooleanField(default = False)
+    annonymous = models.BooleanField(default=False)
     module = models.ForeignKey(Module)
     comments = models.TextField()
     last_updated = models.DateTimeField(auto_now_add=False, auto_now=True) 
@@ -349,4 +350,33 @@ class ModuleReview(models.Model):
     class Meta:
         unique_together = ('worker', 'module')
 
+
+class FlowModel(models.Model):
+    id = models.OneToOneField(User, primary_key=True)
+    flow = FlowField()
+
+
+class AccountModel(models.Model):
+    name = models.CharField(max_length=128)
+    type = models.CharField(max_length=16)
+    email = models.EmailField()
+    access_token = models.TextField(max_length=2048)
+    root = models.CharField(max_length=256)
+    is_active = models.IntegerField()
+    quota = models.BigIntegerField()
+    used_space = models.BigIntegerField()
+    assigned_space = models.BigIntegerField()
+    status = models.IntegerField(default=quota)
+    owner = models.ForeignKey(User)
+
+
+class CredentialsModel(models.Model):
+    account = models.ForeignKey(AccountModel)
+    credential = CredentialsField()
+
+
+class TemporaryFlowModel(models.Model):
+    user = models.ForeignKey(User)
+    type = models.CharField(max_length=16)
+    email = models.EmailField()
 
