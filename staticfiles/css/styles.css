@@ -176,7 +176,7 @@ a.contributor-thumb img {
     opacity: 0;
 }
 
-.project-form md-list {
+.project-form .md-list-info {
     border: 1px solid #ebebeb;
 	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
     background-color: #ffffff;
@@ -196,4 +196,36 @@ a.contributor-thumb img {
   line-height: 0;
   opacity: 0;
   padding: 0 10px;
+}
+
+.gray {
+    background: #f5f5f5;
+}
+.green {
+    background: #b9f6ca;
+}
+
+.yellow {
+    background: #ffff8d;
+}
+
+.blue {
+    background: #84ffff;
+}
+
+md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.red {
+    background: #ff8a80;
+}
+
+.blue200-border {
+    border: solid 2px #90caf9;
+}
+
+.md-tabs-template
+{
+    min-width:256px;
 }
