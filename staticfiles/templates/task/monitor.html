@@ -1,62 +1,151 @@
 
 <div class="container">
 
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
-
-  <div class="col-md-3">
-    <div class="text-center" ng-class="'text-' + getStatusColor(filter)">
-      <span style="font-size: 80px">{{ getPercent(workers, filter) }}</span>
-      <span style="font-size: 40px">%</span>
+  <div class="col-md-12 text-center" style="margin-bottom: 50px">
+    <div class="col-md-3">
+      <h1>99.9%</h1>
+      Complete
     </div>
-    <div class="progress">
-      <div ng-repeat="(key, value) in workers | countBy: 'status'" class="progress-bar" ng-class="'status-' + getStatusColor(key)" style="width:{{ value | percent: workers.length }}%; opacity: {{ filter && filter !== key ? '0.3' : ''}}" ng-click="selectStatus(key)">{{ value }}</div>
+    <div class="col-md-3">
+      <h1>$1200</h1>
+      Cost
     </div>
-
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-calendar-o"></i> &nbsp; Milestone 1</h3>
-      </div>
-      <div class="panel-body">
-      <h4>Create paper prototype</h4>
-      <p>
-        Bacon ipsum dolor amet ham hock pastrami tongue tail ball tip, jowl ribeye. Andouille tenderloin cupim, t-bone meatloaf pork spare ribs filet mignon landjaeger shank hamburger brisket fatback ribeye short .
-      </p>
-      </div>
+    <div class="col-md-3">
+      <h1>319</h1>
+      Active Test Questions
     </div>
-
+    <div class="col-md-3">
+      <h1>33,520</h1>
+      Units
+    </div>
+    <div class="col-md-3">
+      <h1>157</h1>
+      Judgments Per Hour
+    </div>
+    <div class="col-md-3">
+      <h1>173K</h1>
+      Trusted Judgments
+    </div>
+    <div class="col-md-3">
+      <h1>1,901</h1>
+      Untrusted Judgments
+    </div>
+    <div class="col-md-3">
+      <h1>16</h1>
+      Pendings Judgments
+    </div>
   </div>
 
-  <div class="col-md-9">
-    <div class="table-responsive ">
-      <table class="table table-bordred table-striped table-hover">
-        <thead>
-          <th ng-click='orderTable()'>#</th>
-          <th ng-click='orderTable("name")'>Name</th>
-          <th ng-click='orderTable("status")'>Status</th>
-          <th ng-click='orderTable("time")'>Time</th>
-          <th ng-click='orderTable("start")'>Start</th>
-          <!-- <th>Detail</th> -->
-        </thead>
-        <tbody>
-          <tr ng-repeat="worker in workers | orderBy: order | filterBy: ['status'] : filter" ng-click="showModal(worker)">
-            <td>{{ $index+1 }}</td>
-            <td>{{ worker.name }}</td>
-            <td>
-              <span class="label" ng-class="'status-' + getStatusColor(worker.status)">{{ getStatusName(worker.status) }}</span>
-            </td>
-            <td>{{ worker.time }} min</td>
-            <td>{{ worker.start }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">Judgements Per Hour</h4>
+      </div>
+      <div class="panel-body">
+        <highchart config="workChartConfig" style="min-width: 310px; height: 400px; margin: 0 auto"></highchart>
+      </div>
     </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Contributor Funnel</h4>
+        </div>
+        <div class="panel-body">
+        <highchart config="funnelChartConfig" style="height:300px;"></highchart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Test Questions</h4>
+        </div>
+        <div class="panel-body">
+          <highchart config="pieChartConfig" style="height:300px;"></highchart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Contributor Satisfaction</h4>
+        </div>
+        <div class="panel-body text-center">
+          <h1>3.6/5</h1>
+          <h5>Overall</h5>
+          <table class="table">
+            <tr>
+              <td><h3>3.7/5</h3><h6>Instructions Clear</h6></td>
+              <td><h3>3.6/5</h3><h6>Test Questions Fair</h6></td>
+            </tr>
+            <tr>
+              <td><h3>3.7/5</h3><h6>Ease Of Job</h6></td>
+              <td><h3>3.5/5</h3><h6>Pay</h6></td>
+          </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+
+    <div class="col-md-3">
+      <div class="text-center" ng-class="'text-' + getStatusColor(filter)">
+        <span style="font-size: 80px">{{ getPercent(workers, filter) }}</span>
+        <span style="font-size: 40px">%</span>
+      </div>
+      <div class="progress">
+        <div ng-repeat="(key, value) in workers | countBy: 'status'" class="progress-bar" ng-class="'status-' + getStatusColor(key)" style="width:{{ value | percent: workers.length }}%; opacity: {{ filter && filter !== key ? '0.3' : ''}}" ng-click="selectStatus(key)">{{ value }}</div>
+      </div>
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-calendar-o"></i> &nbsp; Milestone 1</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Create paper prototype</h4>
+          <p>
+            Bacon ipsum dolor amet ham hock pastrami tongue tail ball tip, jowl ribeye. Andouille tenderloin cupim, t-bone meatloaf pork spare ribs filet mignon landjaeger shank hamburger brisket fatback ribeye short .
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- col-md-3 -->
+
+    <div class="col-md-9">
+      <div class="table-responsive">
+        <table class="table table-bordred table-striped table-hover">
+          <thead>
+            <th ng-click='orderTable()'>#</th>
+            <th ng-click='orderTable("name")'>Name</th>
+            <th ng-click='orderTable("status")'>Status</th>
+            <th ng-click='orderTable("time")'>Time</th>
+            <th ng-click='orderTable("start")'>Start</th>
+            <!-- <th>Detail</th> -->
+          </thead>
+          <tbody>
+            <tr ng-repeat="worker in workers | orderBy: order | filterBy: ['status'] : filter" ng-click="showModal(worker)">
+              <td>{{ $index+1 }}</td>
+              <td>{{ worker.name }}</td>
+              <td>
+                <span class="label" ng-class="'status-' + getStatusColor(worker.status)">{{ getStatusName(worker.status) }}</span>
+              </td>
+              <td>{{ worker.time }} min</td>
+              <td>{{ worker.start }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- col-md-9 -->
   </div>
 </div>
 
@@ -67,8 +156,8 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">
-        <span class="label" ng-class="'status-' + getStatusColor(selectedWorker.status)">{{ getStatusName(selectedWorker.status) }}</span>
-        {{ selectedWorker.name }}
+          <span class="label" ng-class="'status-' + getStatusColor(selectedWorker.status)">{{ getStatusName(selectedWorker.status) }}</span>
+          {{ selectedWorker.name }}
         </h4>
       </div>
       <div class="modal-body">
@@ -85,62 +174,4 @@
     </div>
   </div>
 </div>
-
-<script>
-$(function () {
-    $('#container').highcharts({
-        chart: {
-          zoomType: 'xy'
-        },
-        title: {
-          text: 'Work Per Hour'
-        },
-        xAxis: [{
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          crosshair: true
-        }],
-        yAxis: [{}, {
-          title: {
-            text: 'Work per hour',
-            style: {
-              color: Highcharts.getOptions().colors[0]
-            }
-          },
-          labels: {
-            format: '{value} hour',
-            style: {
-              color: Highcharts.getOptions().colors[0]
-            }
-          },
-          opposite: true
-        }],
-        tooltip: {
-          shared: true
-        },
-        legend: {
-          layout: 'vertical',
-          align: 'left',
-          x: 120,
-          verticalAlign: 'top',
-          y: 100,
-          floating: true,
-          backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-        },
-        series: [{
-          name: 'Work per hour',
-          type: 'column',
-          yAxis: 1,
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-          tooltip: {
-            valueSuffix: ' mm'
-          }
-        }]
-    });
-});
-
-
-
-</script>
-
 

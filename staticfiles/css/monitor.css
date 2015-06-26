@@ -4,7 +4,7 @@
 }
 
 .percent {
-  color: #69AC24;
+  color: #77dd77;
 }
 
 .progress {
@@ -13,23 +13,23 @@
 }
 
 .status-green {
-  background: #69AC24;
+  background: #77dd77;
 }
 .status-dark {
-  background: #4F5A71;
+  background: #708090;
 }
 .status-gray {
-  background: #BBC2D1;
+  background: #cfcfc4;
 }
 
 .text-green {
-  color: #69AC24;
+  color: #77dd77;
 }
 .text-dark {
-  color: #4F5A71;
+  color: #708090;
 }
 
 .text-gray {
-  color: #BBC2D1;
+  color: #cfcfc4;
 }
 

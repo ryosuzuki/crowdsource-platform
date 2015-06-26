@@ -2,13 +2,13 @@
 * MonitorController
 * @namespace crowdsource.monitor.controllers
  * @author ryosuzuki
-*/
-(function () {
+ */
+ (function () {
   'use strict';
 
   angular
-    .module('crowdsource.monitor.controllers')
-    .controller('MonitorController', MonitorController);
+  .module('crowdsource.monitor.controllers')
+  .controller('MonitorController', MonitorController);
 
   MonitorController.$inject = ['$window', '$location', '$scope', 'Monitor', '$filter'];
 
@@ -57,5 +57,138 @@
     function getStatusColor (status) {
       return status == 2 ? 'gray' : (status == 1 ? 'dark' : 'green');
     }
+
+    var green = '#77dd77';
+    var dark  = '#708090';
+    var gray  = '#cfcfc4';
+    var yellow= '#fdfd96';
+    var red   = '#ff6961';
+
+    vm.workChartSeries = [{
+      name: 'Work per hour',
+      data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, ]
+    }];
+
+    vm.funnelChartSeries = [{
+      name: 'Untrusted',
+      data: [2, 2],
+      color: dark,
+    }, {
+      name: 'Trusted',
+      data: [5, 3],
+      color: green,
+    }]
+
+    vm.pieChartSeries = [{
+      type: 'pie',
+      name: 'Browser share',
+      data: [ ['Good', 45.0], ['Contested', 26.8], {　name: 'Missed',　y: 12.8,　sliced: true,　selected: true　}, ['Disabled', 8.5] ]
+    }];
+
+    vm.workChartConfig = {
+      options: {
+        chart: {
+          type: 'column'
+        },
+        plotOptions: {
+          column: {
+            groupPadding: 0,
+          },
+          series: {
+            color: '#77dd77',
+          }
+        },
+      },
+      title: {
+        text: 'Work per Hour'
+      },
+      xAxis: {
+        categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+        ],
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Rainfall (mm)'
+        }
+      },
+      series: vm.workChartSeries,
+    }
+
+    vm.funnelChartConfig = {
+      options: {
+        chart: {
+          type: 'bar'
+        },
+        plotOptions: {
+          series: {
+            stacking: 'normal',
+          }
+        },
+      },
+      title: {
+        text: 'Contributor Funnel'
+      },
+      xAxis: {
+        categories: ['Quiz', 'Work']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Total'
+        }
+      },
+      legend: {
+        reversed: true
+      },
+      series: vm.funnelChartSeries,
+    }
+
+    vm.pieChartConfig = {
+      options: {
+        chart: {
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}'
+            },
+            colors: [green, dark, gray, yellow, red],
+          }
+        },
+      },
+      title: {
+        text: 'Test Questions'
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      series: vm.pieChartSeries,
+    }
+
   }
+
 })();

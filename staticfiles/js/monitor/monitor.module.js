@@ -8,7 +8,7 @@
   ]);
 
   angular
-    .module('crowdsource.monitor.controllers', ['angular.filter']);
+    .module('crowdsource.monitor.controllers', ['angular.filter', 'highcharts-ng']);
   angular
     .module('crowdsource.monitor.services', []);
 
